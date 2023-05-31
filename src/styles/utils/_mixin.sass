@@ -1,0 +1,26 @@
+@mixin padding($color)
+  padding: 2rem
+  background: $color
+
+@mixin title-section()
+  font-family: serif
+  font-size: $size-title
+  font-weight: bold
+
+@mixin scrollbar()
+  scrollbar-color: #ea8279 #d6d6d6
+  scrollbar-width: thin
+
+  &::-webkit-scrollbar
+    width: .35rem
+    height: .3rem
+    background: #fff
+    border-radius: 0.625rem
+
+    &-thumb
+      background-color: #ea8279
+      border-radius: 0.625rem
+
+    &-track
+      background-color: #d6d6d6
+      border-radius: 0.625rem
