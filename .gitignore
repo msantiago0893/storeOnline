@@ -1,0 +1,82 @@
+### Git ###
+*.orig
+
+### NG CLI ###
+dist/
+dist-server/
+tmp/
+e2e/*.js
+e2e/*.map
+out-tsc/
+
+### Node ###
+node_modules/
+bower_components/
+package-lock.json
+
+### VIM ###
+*~
+*.swp
+*.swo
+
+### General ###
+*.log
+*.lock*
+*.DS_Store
+
+# compiled output
+/dist
+/tmp
+/out-tsc
+# Only exists if Bazel was run
+/bazel-out
+
+# profiling files
+chrome-profiler-events*.json
+speed-measure-plugin*.json
+
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# IDE - VSCode
+.vscode/
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/*
+
+# misc
+/.sass-cache
+/connect.lock
+/coverage
+/libpeerconnection.log
+npm-debug.log
+yarn-error.log
+testem.log
+/typings
+
+# System Files
+.DS_Store
+Thumbs.db
+
+### Angular ###
+/dist
+/tmp
+/app/**/*.js
+/app/**/*.js.map
+
+# dependencies
+/node_modules
+/bower_components
+
+# e2e
+/e2e/*.js
+/e2e/*.map
