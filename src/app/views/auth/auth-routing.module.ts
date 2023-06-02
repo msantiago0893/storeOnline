@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { SigninComponent } from './signin/signin.component';
+import { SignupComponent } from './signup/signup.component';
 
 const routes: Routes = [
   {
@@ -9,6 +10,7 @@ const routes: Routes = [
     children: [
       { path: 'forgot-password', component: ForgotPasswordComponent },
       { path: 'signin', component: SigninComponent },
+      { path: 'signup', component: SignupComponent },
       { path: '**', redirectTo:'signin' }
     ]
   }
