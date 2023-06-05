@@ -1,19 +1,23 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { AuthRoutingModule } from './auth-routing.module';
-import { SignupComponent } from './signup/signup.component';
-import { SigninComponent } from './signin/signin.component';
+import { HeaderModule } from 'src/app/shared/components/header/header.module';
+
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { AngularMaterialModule } from 'src/app/shared/angular-material/angular-material.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
-    ForgotPasswordComponent,
-    SignupComponent,
-    SigninComponent
+    ForgotPasswordComponent
   ],
   imports: [
     CommonModule,
-    AuthRoutingModule
+    AuthRoutingModule,
+    AngularMaterialModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HeaderModule
   ]
 })
 export class AuthModule { }
