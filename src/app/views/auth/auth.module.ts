@@ -6,10 +6,12 @@ import { HeaderModule } from 'src/app/shared/components/header/header.module';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { AngularMaterialModule } from 'src/app/shared/angular-material/angular-material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SigninComponent } from './signin/signin.component';
 
 @NgModule({
   declarations: [
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    SigninComponent
   ],
   imports: [
     CommonModule,
