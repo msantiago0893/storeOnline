@@ -1,5 +1,6 @@
 export const ROUTER = {
   AUTH: "auth",
   FORGOT_PASSWORD: "forgot-password",
-  SIGNIN: "signin"
+  SIGNIN: "signin",
+  SIGNUP: "signup"
 }
