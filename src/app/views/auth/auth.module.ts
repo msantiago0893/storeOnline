@@ -7,11 +7,13 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { AngularMaterialModule } from 'src/app/shared/angular-material/angular-material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SigninComponent } from './signin/signin.component';
+import { SignupComponent } from './signup/signup.component';
 
 @NgModule({
   declarations: [
     ForgotPasswordComponent,
-    SigninComponent
+    SigninComponent,
+    SignupComponent
   ],
   imports: [
     CommonModule,
