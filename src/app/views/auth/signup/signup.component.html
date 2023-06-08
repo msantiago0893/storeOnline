@@ -1,1 +1,63 @@
-<p>signup works!</p>
+<app-header></app-header>
+
+<form class="form" [formGroup]="myForm" novalidate>
+
+  <h1 class="form__title"> Registro </h1>
+
+  <h3 class="form__title"> Datos personales </h3>
+
+  <mat-form-field class="form__input" appearance="fill">
+    <mat-label>Nombre</mat-label>
+    <input matInput formControlName="name">
+    <mat-error *ngIf="input['name'].touched && input['name'].invalid">
+      <span *ngIf="input['name'].errors">Ingrese un nombre válido</span>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="form__input" appearance="fill">
+    <mat-label>Apellido paterno</mat-label>
+    <input matInput formControlName="firstName">
+    <mat-error *ngIf="input['firstName'].touched && input['firstName'].invalid">
+      <span *ngIf="input['firstName'].errors">Campo inválido</span>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="form__input" appearance="fill">
+    <mat-label>Apellido materno</mat-label>
+    <input matInput formControlName="secondtName">
+    <mat-error *ngIf="input['secondtName'].touched && input['firstName'].invalid">
+      <span *ngIf="input['secondtName'].errors">Campo inválido</span>
+    </mat-error>
+  </mat-form-field>
+
+  <section>
+    <label>Género:</label>
+    <mat-radio-group formControlName="gender">
+      <mat-radio-button value="M">Hombre</mat-radio-button>
+      <mat-radio-button value="F">Mujer</mat-radio-button>
+    </mat-radio-group>
+  </section>
+
+  <mat-form-field class="form__input" appearance="fill">
+    <mat-label>Email</mat-label>
+    <input matInput formControlName="email">
+    <mat-error *ngIf="input['email'].touched && input['email'].invalid">
+      <span *ngIf="input['email'].errors">Campo inválido</span>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="form__input" appearance="fill">
+    <mat-label>Contraseña</mat-label>
+    <input matInput formControlName="password" type="password">
+    <mat-error *ngIf="input['password'].touched && input['password'].invalid">
+      <span *ngIf="input['password'].errors?.pattern">La contraseña debe contener al menos una letra y un número.</span>
+      <span *ngIf="input['password'].errors?.maxLength">La contraseña no debe superar los 50 caracteres.</span>
+      <span *ngIf="input['password'].errors?.minLength">La contraseña debe tener al menos 8 caracteres.</span>
+    </mat-error>
+  </mat-form-field>
+
+  <button mat-raised-button color="primary">Entrar</button>
+  <p>Recuperar contraseña</p>
+</form>
+
+<pre> {{ myForm.value | json }} </pre>
