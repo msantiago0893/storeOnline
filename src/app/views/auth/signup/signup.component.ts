@@ -51,6 +51,9 @@ export class SignupComponent implements OnInit {
         Validators.pattern('^(?=.*[a-zA-Z])(?=.*[0-9])[a-zA-Z0-9]+$'),
         Validators.maxLength(50),
         Validators.minLength(8)
+      ]],
+      calendar: ['', [
+        Validators.required
       ]]
     });
   }
