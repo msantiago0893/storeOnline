@@ -1,17 +1,34 @@
+.form-wrapper
+  display: flex
+  justify-content: center
+  height: calc(100vh - 5rem)
+  align-items: center
+
 .form
-  width: 100%
-  height: 100vh
+  width: 20rem
+  height: max-content
   display: flex
   justify-content: center
   align-items: center
   flex-direction: column
+  border: 2px solid #5eadff
+  padding: 0px 1.5rem
+  border-radius: 1rem
 
   &__title
     padding: 0.9rem
 
   &__input
-    width: 15rem
+    width: 100%
     display: flex
     justify-content: center
     flex-direction: column
     margin-bottom: 6px
+
+.btn-access
+  margin-bottom: 2rem
+  width: 6rem
+
+.text
+  font-weight: bold
+  padding: 10px
