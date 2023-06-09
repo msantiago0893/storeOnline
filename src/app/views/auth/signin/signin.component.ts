@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {  AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-signin',
@@ -26,12 +26,15 @@ export class SigninComponent implements OnInit {
       email:['', [
         Validators.required,
         Validators.email,
-        Validators.maxLength(100)
+        Validators.minLength(5),
+        Validators.maxLength(50)
+
       ]],
       password:['', [
         Validators.required,
-        Validators.email,
-        Validators.maxLength(100)
+        Validators.minLength(6),
+        Validators.maxLength(12),
+        Validators.pattern('^(?=.[a-zA-Z])(?=.[0-9])[a-zA-Z0-9]+$')
       ]]
     });
   }
