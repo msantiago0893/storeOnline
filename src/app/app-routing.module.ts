@@ -11,6 +11,10 @@ const routes: Routes = [
     path:'auth',
     loadChildren: () => import('./views/auth/auth.module').then(m => m.AuthModule)
   },
+  {
+    path:'manager',
+    loadChildren: () => import('./views/manager/manager.module').then(m => m.ManagerModule)
+  },
 
 ];
 
