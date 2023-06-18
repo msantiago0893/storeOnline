@@ -9,6 +9,7 @@ import {  AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/f
 export class SigninComponent implements OnInit {
 
   myForm: FormGroup = new FormGroup({});
+  hide: boolean = true;
 
   constructor( private fb: FormBuilder ) {
     this.validators();
