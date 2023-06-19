@@ -8,9 +8,11 @@ import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/fo
 })
 export class SignupComponent implements OnInit {
 
+  hide = true;
+
   myForm: FormGroup = new FormGroup({});
 
-  constructor( private fb: FormBuilder ) {
+  constructor(private fb: FormBuilder) {
     this.validators();
   }
 
@@ -54,7 +56,19 @@ export class SignupComponent implements OnInit {
       ]],
       calendar: ['', [
         Validators.required
-      ]]
+      ]],
+      telephone: ['', [
+        Validators.required,
+        Validators.pattern("^[0-9]+$"),
+        Validators.minLength(10),
+        Validators.maxLength(10)
+      ]],
+      cellPhone: ['', [
+        Validators.required,
+        Validators.pattern("^[0-9]+$"),
+        Validators.minLength(10),
+        Validators.maxLength(10)
+      ]],
     });
   }
 

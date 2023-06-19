@@ -31,10 +31,10 @@
       </mat-error>
     </mat-form-field>
 
-    <section>
+    <section class="genero">
       <label>Género:</label>
       <mat-radio-group formControlName="gender">
-        <mat-radio-button value="M">Hombre</mat-radio-button>
+        <mat-radio-button class="genero__radio" value="M">Hombre</mat-radio-button>
         <mat-radio-button value="F">Mujer</mat-radio-button>
       </mat-radio-group>
     </section>
@@ -49,16 +49,16 @@
 
     <mat-form-field class="form__input" appearance="fill">
       <mat-label>Contraseña</mat-label>
-      <input matInput formControlName="password" type="password">
+      <input matInput formControlName="password" [type]="hide ? 'password' : 'text'">
+      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
       <mat-error *ngIf="input['password'].touched && input['password'].invalid">
-        <span *ngIf="input['password'].errors?.pattern">La contraseña debe contener al menos una letra y un
-          número.</span>
-        <span *ngIf="input['password'].errors?.maxLength">La contraseña no debe superar los 50 caracteres.</span>
-        <span *ngIf="input['password'].errors?.minLength">La contraseña debe tener al menos 8 caracteres.</span>
+        <span *ngIf="input['password'].errors">Contraseña inválida</span>
       </mat-error>
     </mat-form-field>
 
-    <mat-form-field class="example-full-width">
+    <mat-form-field class="birthdate">
       <mat-label>Fecha de nacimiento</mat-label>
       <div class="DatepickerForm">
         <input matInput [matDatepicker]="picker" formControlName="calendar">
@@ -67,6 +67,26 @@
       </div>
       <mat-hint>MM/DD/YYYY</mat-hint>
     </mat-form-field>
+
+    <mat-form-field class="form__input" appearance="fill">
+      <mat-label>Teléfono</mat-label>
+      <input matInput formControlName="telephone">
+      <mat-error *ngIf="input['telephone'].touched && input['telephone'].invalid">
+        <span *ngIf="input['telephone'].errors">Número de teléfono inválido</span>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="form__input" appearance="fill">
+      <mat-label>Celular</mat-label>
+      <input matInput formControlName="cellPhone">
+      <mat-error *ngIf="input['cellPhone'].touched && input['cellPhone'].invalid">
+        <span *ngIf="input['cellPhone'].errors">Número de celular inválido</span>
+      </mat-error>
+    </mat-form-field>
+
+
+
+
   </div>
 
 
