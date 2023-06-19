@@ -1,5 +1,4 @@
-<app-header class="acceso-header"></app-header>
-
+<app-header></app-header>
 
 <div class="form-wrapper">
 
@@ -16,18 +15,22 @@
     </mat-form-field>
 
     <mat-form-field class="form__input" appearance="fill">
-      <mat-label>contraseña</mat-label>
-      <input matInput [type]="hide ? 'password' : 'text'">
+      <mat-label>Contraseña</mat-label>
+      <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
       <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
         [attr.aria-pressed]="hide">
         <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
       </button>
+      <mat-error *ngIf="input['password'].touched && input['password'].invalid">
+        <span *ngIf="input['password'].errors">contraseña invalido</span>
+      </mat-error>
     </mat-form-field>
 
 
-    <button class="btn-access" mat-raised-button color="primary">Entrar</button>
+    <button class="btn-access" mat-raised-button color="primary" [disabled]="myForm.invalid" (click)="access()" >Entrar</button>
 
     <a class="text" href="">Recuperar contraseña</a>
   </form>
   <pre>{{ myForm.value | json }}</pre>
+  <pre>{{ myForm.invalid | json }}</pre>
 </div>
