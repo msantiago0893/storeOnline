@@ -1,25 +1,36 @@
 <app-header></app-header>
-<p>signin works!</p>
-<form class="form" [formGroup]="myForm" novalidate>
 
-  <h1 class="form__title"> Inicio </h1>
+<div class="form-wrapper">
 
-  <mat-form-field class="form__input" appearance="fill">
-    <mat-label>Email</mat-label>
-    <input matInput formControlName="email">
-    <mat-error *ngIf="input['email'].touched && input['email'].invalid">
-      <span *ngIf="input['email'].errors">Campo invalido</span>
-    </mat-error>
-  </mat-form-field>
+  <form class="form" [formGroup]="myForm" novalidate>
 
-  <mat-form-field class="form__input" appearance="fill">
-    <mat-label>Contraseña</mat-label>
-    <input matInput formControlName="password">
-    <mat-error *ngIf="input['password'].touched && input['password'].invalid">
-      <span *ngIf="input['password'].errors">Contraseña invalida</span>
-    </mat-error>
-  </mat-form-field>
+    <img class="form__logo" src="assets/login.jpg">
 
-  <button mat-raised-button color="primary">Entrar</button>
-  <p>Recuperar contraseña</p>
-</form>
+    <mat-form-field class="form__input" appearance="fill">
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email">
+      <mat-error *ngIf="input['email'].touched && input['email'].invalid">
+        <span *ngIf="input['email'].errors">Email invalido</span>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="form__input" appearance="fill">
+      <mat-label>Contraseña</mat-label>
+      <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
+      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+      <mat-error *ngIf="input['password'].touched && input['password'].invalid">
+        <span *ngIf="input['password'].errors">contraseña invalido</span>
+      </mat-error>
+    </mat-form-field>
+
+
+    <button class="btn-access" mat-raised-button color="primary" [disabled]="myForm.invalid" (click)="access()" >Entrar</button>
+
+    <a class="text" href="">Recuperar contraseña</a>
+  </form>
+  <pre>{{ myForm.value | json }}</pre>
+  <pre>{{ myForm.invalid | json }}</pre>
+</div>
