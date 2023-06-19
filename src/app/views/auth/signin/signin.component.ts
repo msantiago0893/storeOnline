@@ -21,6 +21,11 @@ export class SigninComponent implements OnInit {
   get input(): { [key: string]: AbstractControl } {
     return this.myForm.controls;
   }
+  
+  access() {
+    console.log("hola");
+    console.log(this.myForm.value);
+  }
 
   validators() {
     this.myForm = this.fb.group({
@@ -35,9 +40,11 @@ export class SigninComponent implements OnInit {
         Validators.required,
         Validators.minLength(6),
         Validators.maxLength(12),
-        Validators.pattern('^(?=.[a-zA-Z])(?=.[0-9])[a-zA-Z0-9]+$')
+        // Validators.pattern('^(?=.[a-zA-Z])(?=.[0-9])[a-zA-Z0-9]+$'),
       ]]
     });
   }
 
 }
+
+// <a class="menu__link" mat-flat-button routerLink="/auth/signup">¿Olvidaste la contraseña?</a>
