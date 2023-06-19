@@ -29,7 +29,7 @@
 
     <button class="btn-access" mat-raised-button color="primary" [disabled]="myForm.invalid" (click)="access()" >Entrar</button>
 
-    <a class="text" href="">Recuperar contraseña</a>
+    <a class="text" mat-flat-button routerLink="/auth/forgot-password">Recuperar contraseña</a>
   </form>
   <pre>{{ myForm.value | json }}</pre>
   <pre>{{ myForm.invalid | json }}</pre>
