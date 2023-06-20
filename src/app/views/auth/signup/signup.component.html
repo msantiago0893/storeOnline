@@ -2,9 +2,9 @@
 
 <form class="form" [formGroup]="myForm" novalidate>
 
-  <h1 class="form__title"> Registro </h1>
+  <h1 class="title">Registro</h1>
 
-  <h3 class="form__title"> Datos personales </h3>
+  <h3 class="subtitle">Datos personales</h3>
 
   <div class="personal">
     <mat-form-field class="form__input" appearance="fill">
@@ -83,10 +83,66 @@
         <span *ngIf="input['cellPhone'].errors">Número de celular inválido</span>
       </mat-error>
     </mat-form-field>
+  </div>
 
+  <h3 class="subtitle subtitle--margin-top">Dirección</h3>
 
+  <div class="personal">
+    <mat-form-field class="form__input" appearance="fill">
+      <mat-label>País</mat-label>
+      <input matInput formControlName="country">
+      <mat-error *ngIf="input['country'].touched && input['country'].invalid">
+        <span *ngIf="input['country'].errors">Ingrese un país válido</span>
+      </mat-error>
+    </mat-form-field>
 
+    <mat-form-field class="form__input" appearance="fill">
+      <mat-label>Estado</mat-label>
+      <input matInput formControlName="state">
+      <mat-error *ngIf="input['state'].touched && input['state'].invalid">
+        <span *ngIf="input['state'].errors">Ingrese un estado válido</span>
+      </mat-error>
+    </mat-form-field>
 
+    <mat-form-field class="form__input" appearance="fill">
+      <mat-label>Ciudad</mat-label>
+      <input matInput formControlName="city">
+      <mat-error *ngIf="input['city'].touched && input['city'].invalid">
+        <span *ngIf="input['city'].errors">Ingrese una ciudad válida</span>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="form__input" appearance="fill">
+      <mat-label>Municipio</mat-label>
+      <input matInput formControlName="municipality">
+      <mat-error *ngIf="input['municipality'].touched && input['municipality'].invalid">
+        <span *ngIf="input['municipality'].errors">Ingrese un municipio válido</span>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="form__input" appearance="fill">
+      <mat-label>Colonia</mat-label>
+      <input matInput formControlName="cologne">
+      <mat-error *ngIf="input['cologne'].touched && input['cologne'].invalid">
+        <span *ngIf="input['cologne'].errors">Ingrese una colonia válida</span>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="form__input" appearance="fill">
+      <mat-label>C.P.</mat-label>
+      <input matInput formControlName="postalCode">
+      <mat-error *ngIf="input['postalCode'].touched && input['postalCode'].invalid">
+        <span *ngIf="input['postalCode'].errors">Ingrese un código postal válido</span>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="form__input" appearance="fill">
+      <mat-label>Calle</mat-label>
+      <input matInput formControlName="street">
+      <mat-error *ngIf="input['street'].touched && input['street'].invalid">
+        <span *ngIf="input['street'].errors">Ingrese una calle válida</span>
+      </mat-error>
+    </mat-form-field>
   </div>
 
 
