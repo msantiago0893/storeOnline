@@ -27,17 +27,17 @@ export class SignupComponent implements OnInit {
     this.myForm = this.fb.group({
       name: ['', [
         Validators.required,
-        Validators.pattern('[a-zA-Z ]*'),
+        Validators.pattern('[a-zA-ZñÑáéíóúÁÉÍÓÚ ]*'),
         Validators.maxLength(100)
       ]],
       firstName: ['', [
         Validators.required,
-        Validators.pattern('[a-zA-Z ]*'),
+        Validators.pattern('[a-zA-ZñÑáéíóúÁÉÍÓÚ ]*'),
         Validators.maxLength(100)
       ]],
       secondtName: ['', [
         Validators.required,
-        Validators.pattern('[a-zA-Z ]*'),
+        Validators.pattern('[a-zA-ZñÑáéíóúÁÉÍÓÚ ]*'),
         Validators.maxLength(100)
       ]],
       gender: ['', [
@@ -68,6 +68,41 @@ export class SignupComponent implements OnInit {
         Validators.pattern("^[0-9]+$"),
         Validators.minLength(10),
         Validators.maxLength(10)
+      ]],
+      country: ['', [
+        Validators.required,
+        Validators.pattern('[a-zA-ZñÑáéíóúÁÉÍÓÚ ]*'),
+        Validators.maxLength(100)
+      ]],
+      state: ['', [
+        Validators.required,
+        Validators.pattern('[a-zA-ZñÑáéíóúÁÉÍÓÚ ]*'),
+        Validators.maxLength(100)
+      ]],
+      city: ['', [
+        Validators.required,
+        Validators.pattern('[a-zA-ZñÑáéíóúÁÉÍÓÚ ]*'),
+        Validators.maxLength(100)
+      ]],
+      municipality: ['', [
+        Validators.required,
+        Validators.pattern('[a-zA-ZñÑáéíóúÁÉÍÓÚ ]*'),
+        Validators.maxLength(100)
+      ]],
+      cologne: ['', [
+        Validators.required,
+        Validators.pattern('[a-zA-ZñÑáéíóúÁÉÍÓÚ ]*'),
+        Validators.maxLength(100)
+      ]],
+      postalCode: ['', [
+        Validators.required,
+        Validators.pattern('[a-zA-Z0-9]*'),
+        Validators.maxLength(10)
+      ]],
+      street: ['', [
+        Validators.required,
+        Validators.pattern('[a-zA-ZñÑáéíóúÁÉÍÓÚ ]*'),
+        Validators.maxLength(100)
       ]],
     });
   }
