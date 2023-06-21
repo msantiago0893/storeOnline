@@ -46,5 +46,3 @@ export class SigninComponent implements OnInit {
   }
 
 }
-
-// <a class="menu__link" mat-flat-button routerLink="/auth/signup">¿Olvidaste la contraseña?</a>
