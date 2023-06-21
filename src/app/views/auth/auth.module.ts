@@ -8,12 +8,14 @@ import { AngularMaterialModule } from 'src/app/shared/angular-material/angular-m
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SigninComponent } from './signin/signin.component';
 import { SignupComponent } from './signup/signup.component';
+import { SuccessfulAccountComponent } from './successful-account/successful-account.component';
 
 @NgModule({
   declarations: [
     ForgotPasswordComponent,
     SigninComponent,
-    SignupComponent
+    SignupComponent,
+    SuccessfulAccountComponent
   ],
   imports: [
     CommonModule,
