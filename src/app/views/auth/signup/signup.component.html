@@ -2,11 +2,11 @@
 
 <form class="form" [formGroup]="myForm" novalidate>
 
-  <h1 class="title">Registro</h1>
+  <h1 class="form__title">Registro</h1>
 
-  <h3 class="subtitle">Datos personales</h3>
+  <h3 class="form__title--margin-left form__title--margin-top">Datos personales</h3>
 
-  <div class="personal">
+  <div class="form__personal">
     <mat-form-field class="form__input" appearance="fill">
       <mat-label>Nombre</mat-label>
       <input matInput formControlName="name">
@@ -58,9 +58,9 @@
       </mat-error>
     </mat-form-field>
 
-    <mat-form-field class="birthdate">
+    <mat-form-field class="form__birthdate form__birthdate" appearance="fill">
       <mat-label>Fecha de nacimiento</mat-label>
-      <div class="DatepickerForm">
+      <div class="form__datepickerForm">
         <input matInput [matDatepicker]="picker" formControlName="calendar">
         <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
@@ -85,9 +85,9 @@
     </mat-form-field>
   </div>
 
-  <h3 class="subtitle subtitle--margin-top">Dirección</h3>
+  <h3 class="form__title--margin-left form__title--margin-top">Dirección</h3>
 
-  <div class="personal">
+  <div class="form__personal">
     <mat-form-field class="form__input" appearance="fill">
       <mat-label>País</mat-label>
       <input matInput formControlName="country">
