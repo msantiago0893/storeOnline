@@ -1,27 +1,28 @@
 @import '_globals'
-.title
-  display: flex
-  flex-direction: column
-  align-items: center
-  margin-top: 1.5rem
-  // font-size: $font-size
 
-.subtitle
-  margin-left: 2rem
-  // font-size: $size-subtitle
-  &--margin-top
-    margin-top: 2rem
+.form
+  &__title
+    display: flex
+    flex-direction: column
+    align-items: center
+    margin-top: 1.5rem
+    &--margin-left
+      margin-left: 2rem
+    &--margin-top
+      margin-top: 1.5rem
 
-.personal
-  // border: 2px solid red
-  display: grid
-  grid-template-columns: repeat(3, 1fr)
-  grid-gap: 1.2em 3em
-  width: 100%
-  padding: 1rem 2rem
+  &__personal
+    display: grid
+    grid-template-columns: repeat(3, 1fr)
+    grid-gap: 1.2em 3em
+    width: 100%
+    padding: 1rem 2rem
 
-.DatepickerForm
-  display: flex
+  &__birthdate
+    margin-top: -24px
+
+  &__datepickerForm
+    display: flex
 
 .genero
   margin-bottom: 2em
@@ -33,9 +34,5 @@
 
   &__radio
     padding-right: 10px
-
-.birthdate
-  margin-top: -12px
-
 
 
