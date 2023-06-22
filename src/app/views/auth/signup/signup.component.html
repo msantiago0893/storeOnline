@@ -31,7 +31,7 @@
       </mat-error>
     </mat-form-field>
 
-    <section class="genero">
+    <section class="gender">
       <label>Género:</label>
       <mat-radio-group formControlName="gender">
         <mat-radio-button class="genero__radio" value="M">Hombre</mat-radio-button>
@@ -145,8 +145,16 @@
     </mat-form-field>
   </div>
 
+  <div class="wrap">
+    <mat-checkbox class="form__checkbox">
+      Acepto los términos y condiciones
+    </mat-checkbox>
 
-  <button mat-raised-button color="primary">Entrar</button>
+    <div class="wrap__btn">
+      <button class="btn" mat-raised-button color="primary" [disabled]="myForm.invalid" (click)="save()">Guardar</button>
+    </div>
+  </div>
+
 </form>
 
 <pre> {{ myForm.value | json }} </pre>
