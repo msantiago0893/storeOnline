@@ -23,6 +23,11 @@ export class SignupComponent implements OnInit {
     return this.myForm.controls;
   }
 
+  save() {
+    console.log("Se ha guardado");
+    console.log(this.myForm.value);
+  }
+
   validators() {
     this.myForm = this.fb.group({
       name: ['', [
