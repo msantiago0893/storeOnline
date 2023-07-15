@@ -1,0 +1,35 @@
+<!-- El título de la página cambia dependiendo de si "id" tiene valor o no -->
+<p class="title"> {{ id ? 'Editar Categoria' : 'Agregar Categoria' }} </p>
+
+<!-- Enlaces de navegación -->
+<div class="menu">
+  <a class="menu__link" mat-stroked-button routerLink="/api/category1" routerLinkActive="menu__link--active">Consulta de catalogos</a>
+  <a class="menu__link" mat-stroked-button routerLink="/api/add-category1" routerLinkActive="menu__link--active">Agregar catalogo</a>
+</div>
+
+<!-- Formulario con un FormGroup llamado "myForm" y el atributo "novalidate" para deshabilitar la validación del navegador -->
+<form class="form" [formGroup]="myForm" novalidate>
+
+  <!-- Campo de entrada para el nombre de la categoría -->
+  <mat-form-field class="form__input" appearance="fill">
+    <mat-label>Nombre</mat-label>
+    <input matInput formControlName="name">
+    <!-- Mostrar mensaje de error si el campo "name" ha sido tocado y es inválido -->
+    <mat-error *ngIf="input['name'].touched && input['name'].invalid">
+      <span *ngIf="input['name'].errors">Nombre invalido</span>
+    </mat-error>
+  </mat-form-field>
+
+  <!-- Campo de entrada para la URL de la imagen -->
+  <mat-form-field class="form__input" appearance="fill">
+    <mat-label>Imagen</mat-label>
+    <input matInput formControlName="image">
+    <!-- Mostrar mensaje de error si el campo "image" ha sido tocado y es inválido -->
+    <mat-error *ngIf="input['image'].touched && input['image'].invalid">
+      <span *ngIf="input['image'].errors">Url de imagen invalido</span>
+    </mat-error>
+  </mat-form-field>
+
+  <!-- Botón para guardar o actualizar la categoría, dependiendo del valor de "id" -->
+  <button class="btn-access" mat-raised-button color="primary" [disabled]="myForm.invalid" (click)=" id ? update() : save()">Entrar</button>
+</form>
