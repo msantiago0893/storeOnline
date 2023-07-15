@@ -10,13 +10,15 @@ import { SigninComponent } from './signin/signin.component';
 import { SignupComponent } from './signup/signup.component';
 import { RouterModule } from '@angular/router';
 import { SuccessfulAccountComponent } from './successful-account/successful-account.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
 
 @NgModule({
   declarations: [
     ForgotPasswordComponent,
     SigninComponent,
     SignupComponent,
-    SuccessfulAccountComponent
+    SuccessfulAccountComponent,
+    ChangePasswordComponent
   ],
   imports: [
     CommonModule,
