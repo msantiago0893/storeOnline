@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ROUTER } from './shared/constants/routers';
 
 const routes: Routes = [
   {
@@ -8,14 +9,18 @@ const routes: Routes = [
     pathMatch:'full'
   },
   {
-    path:'auth',
+    path: 'api',
+    loadChildren: () => import('./views/apis/apis.module').then(m => m.ApisModule)
+  },
+  {
+    path: ROUTER.AUTH,
     loadChildren: () => import('./views/auth/auth.module').then(m => m.AuthModule)
   },
   {
-    path:'manager',
+    path: ROUTER.MANAGER,
     loadChildren: () => import('./views/manager/manager.module').then(m => m.ManagerModule)
   },
-
+  { path: '**', redirectTo: ROUTER.AUTH }
 ];
 
 @NgModule({

@@ -1,0 +1,29 @@
+<!-- Titulo de la sección -->
+<p class="title">MIS CATEGORIAS</p>
+
+<!-- Menú de navegación -->
+<div class="menu">
+  <!-- Enlace para consultar catálogos -->
+  <a class="menu__link" mat-stroked-button routerLink="/api/category1" routerLinkActive="menu__link--active">Consulta de catalogos</a>
+  <!-- Enlace para agregar catálogos -->
+  <a class="menu__link" mat-stroked-button routerLink="/api/add-category1" routerLinkActive="menu__link--active">Agregar catalogo</a>
+</div>
+
+<!-- Cuadrícula para mostrar las categorías -->
+<div class="grid">
+  <!-- Iteración a través de la lista de categorías con la directiva *ngFor -->
+  <div class="card" *ngFor="let item of categories">
+    <!-- Imagen de la categoría -->
+    <img class="card__img" [src]="item.image" alt="Image">
+    <!-- Nombre de la categoría -->
+    <p class="card__name"> {{ item.name }} </p>
+    <!-- Fecha de creación de la categoría -->
+    <p class="card__name"> Creado por: {{ item.creationAt | date }} </p>
+    <!-- Fecha de actualización de la categoría -->
+    <p class="card__name"> Actualizado por: {{ item.updatedAt | date }} </p>
+    <!-- Botón para actualizar la categoría con el id correspondiente -->
+    <button mat-button color="primary" (click)="goToProductDetails(item.id)">Actualizar</button>
+    <!-- Botón para eliminar la categoría con el id correspondiente -->
+    <button mat-button color="warn" (click)="remove(item.id)">Eliminar</button>
+  </div>
+</div>
