@@ -10,6 +10,15 @@ import { Category1 } from 'src/app/views/apis/Models/Category1';
 })
 export class Category1Service {
 
+  /**
+   * LAS CLASES EXISTEN 4 MODIFICADORES DE ACCESO
+   *
+   *  - private: Las (propiedades y métodos) solo son accesibles dentro de la clase en la que están definidos.
+   *  - public: Las (propiedades y métodos) marcados como public son accesibles desde cualquier lugar, incluso fuera de la clase.
+   *  - protected: Las (propiedades y métodos) son accesibles dentro de la clase en la que están definidos y en las clases derivadas.
+   *  - static: Se utiliza para crear (propiedades o métodos) que pertenecen a la clase en sí y no a las instancias de la clase. Son accesibles utilizando el nombre de la clase seguido de un punto (Ejemplo: ClaseEjemplo.propiedadStatic o ClaseEjemplo.metodoStatic()).
+   */
+
   // URL del recurso que se necesitará para consumir los recursos (GET, POST, PUT, DELETE)
   private uri: string = 'https://api.escuelajs.co/api/v1/categories';
 
