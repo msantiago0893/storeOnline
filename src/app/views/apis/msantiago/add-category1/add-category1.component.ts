@@ -65,11 +65,12 @@ export class AddCategory1Component implements OnInit {
     this.myForm = this.fb.group({
       name: ['', [
         Validators.required, // Campo obligatorio
-        Validators.maxLength(50) // Longitud máxima de 50 caracteres
+        Validators.maxLength(50), // Longitud máxima de 50 caracteres
+        Validators.pattern('^[ a-zA-ZñÑáéíóúÁÉÍÓÚ]+$')
       ]],
       image: ['', [
         Validators.required, // Campo obligatorio
-        // Validators.pattern('^(?=.[a-zA-Z])(?=.[0-9])[a-zA-Z0-9]+$'), // Patrón de validación personalizado (comentado)
+        // Validators.pattern('(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?') // Patrón de validación personalizado (comentado)
       ]]
     });
   }
