@@ -1,4 +1,4 @@
-Description Storeonline - Segunda prueba jenkins 3   -- prueba
+Description Storeonline - Segunda prueba jenkins 3
 Angular v12
 Node v16.10.0
 
