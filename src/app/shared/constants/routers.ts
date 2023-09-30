@@ -15,7 +15,7 @@ export const ROUTER = {
 
   PRODUCTS: "products",
   ADD_PRODUCT: "add-product",
-  UPDATE_RPODUCT: "update-product/:id",
+  UPDATE_PRODUCT: "update-product/:id",
   DETAIL_PRODUCT: "product/:id",
 
   USERS: "users",

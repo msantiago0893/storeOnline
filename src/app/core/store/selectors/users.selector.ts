@@ -1,17 +1,15 @@
-import { IUserState } from "../Istate/user.state";
 import { createFeatureSelector, createSelector } from "@ngrx/store";
+import { UserState } from "../reducers/user.reducer";
 
-//TODO: Es el selector que tiene relacion con la propiedad "items"
-// export const selectUserFeature = (state: AppState) => state.items;
+export const selectUserState = createFeatureSelector<UserState>('user');
 
-export const selectItems = createFeatureSelector<ReadonlyArray<IUserState>>('items');
+export const selectUsers = createSelector(
+  selectUserState,
+  (state: UserState) => state.users
+);
 
-// export const selectListItems = createSelector(
-//   selectUserFeature,
-//   (state: IUserState) => state.items
-// );
+export const selectUser = createSelector(
+  selectUserState,
+  (state: UserState) => state.user
+);
 
-// export const selectLoading = createSelector(
-//   selectUserFeature,
-//   (state: IUserState) => state.loading
-// );

@@ -1,14 +1,35 @@
 import {createReducer , on } from '@ngrx/store';
-import { loadUsers } from '../actions/user.action';
-import { IUserState } from '../Istate/user.state';
+import { User } from '@model/user.model';
+import { deleteUser, loadedUser, loadedUsers } from '../actions/user.action';
 
-//TODO: ESTADO INICIAL
-export const initialState: IUserState = { loading: false, items: [] }
+export interface UserState {
+  users: ReadonlyArray<User>,
+  user: User
+}
+
+export const initialState: UserState = {
+  users: [],
+  user: {
+    id: 0,
+    name: '',
+    email: '',
+    password: '',
+    role: '',
+    avatar: '',
+    creationAt: '',
+    updatedAt: ''
+  }
+}
 
 export const UserReducer = createReducer(
   initialState,
-  on(loadUsers, (state) => {  //TODO: on: Sirve para escuchar las acciones
-    console.log('Se ejecuto la accion loadUser ', state);
-    return { ...state, loading: true }
-  })
+  on(loadedUsers, (state, { users }) => {
+    return { ...state, users};
+  }),
+  on(loadedUser, (state, { user }) => {
+    return { ...state, user};
+  }),
+  on(deleteUser, (state) => {
+    return { ...state};
+  }),
 );

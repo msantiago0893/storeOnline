@@ -34,10 +34,6 @@ export class AddCategoryComponent implements OnInit {
     }
   }
 
-  get input(): { [key: string]: AbstractControl } {
-    return this.myForm.controls;
-  }
-
   getCategory() {
     this.store.dispatch(loadCategory({id: this.id}));
 
@@ -57,6 +53,10 @@ export class AddCategoryComponent implements OnInit {
     this.store.dispatch(updateCategory({
       category: { id: this.id, ...this.myForm.value}
     }));
+  }
+
+  get input(): { [key: string]: AbstractControl } {
+    return this.myForm.controls;
   }
 
   validators() {

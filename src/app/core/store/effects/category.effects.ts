@@ -37,22 +37,22 @@ export class CategoryEffects {
 
   addCategory$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(addCategory), // Escucha la acción 'addCategory'
+      ofType(addCategory),
       switchMap((action) =>
         this._service.add(action.category)
       )
     ),
-    { dispatch: false } // No se necesitan despachar acciones en este efecto
+    { dispatch: false }
   );
 
   updateCategory$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(updateCategory), // Escucha la acción 'addCategory'
+      ofType(updateCategory), //TODO: listen for the 'addCategory' action
       switchMap((action) =>
         this._service.update(action.category)
       )
     ),
-    { dispatch: false } // No se necesitan despachar acciones en este efecto
+    { dispatch: false } //TODO: No actions need to be dispatched in this effect
   );
 
   deleteCategory$ = createEffect(() => this.actions$.pipe(
@@ -60,8 +60,8 @@ export class CategoryEffects {
     switchMap(({ id }) =>
       this._service.delete(id)
         .pipe(
-          concatMap(() => [
-            { type: '[Category Remove] Remove success' },
+          concatMap(() => [ //TODO: execute multiple actions
+            { type: '[Category Remove] Remove success' }, //TODO: Test action
             { type: '[Category list] Load Categories' }
           ])
         )

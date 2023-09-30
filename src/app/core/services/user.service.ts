@@ -1,7 +1,10 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { User } from '@model/user.model';
 import { Observable } from 'rxjs';
-import { UserModel } from 'src/app/shared/models/user.model';
+import { tap } from 'rxjs/operators';
+import { AlertSwalService } from './alert-swal.service';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -11,31 +14,58 @@ export class UserService {
   private uri: string = 'https://api.escuelajs.co/api/v1/users';
 
   private httpHeaders = new HttpHeaders({
-    'Content-Type': 'application/json', // El tipo de contenido que esperas recibir
+    'Content-Type': 'application/json',
     'Access-Control-Allow-Origin': '*'
   });
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private alert: AlertSwalService,
+    private route: Router
   ) { }
 
-  public getAll(): Observable<UserModel[]> {
-    return this.http.get<UserModel[]>(this.uri, { headers: this.httpHeaders });
+  public getAll(): Observable<User[]> {
+    return this.http.get<User[]>(this.uri, { headers: this.httpHeaders });
   }
 
-  public getById(id: number): Observable<UserModel> {
-    return this.http.get<UserModel>(`${this.uri}/${id}`);
+  public getById(id: number): Observable<User> {
+    return this.http.get<User>(`${this.uri}/${id}`);
   }
 
   public add(item: Object) {
-    return this.http.post(`${this.uri}`, item, { headers: this.httpHeaders });
+    return this.http.post(`${this.uri}`, item, { headers: this.httpHeaders })
+    .pipe(
+      tap(() => {
+        this.alert.showNotification({
+          message: 'Se ha registrado el usuario'
+        });
+
+        this.route.navigateByUrl('/manager/users');
+      })
+    );
   }
 
-  public update(id: number, item: any) {
-    return this.http.put(`${this.uri}/${id}`, item, { headers: this.httpHeaders });
+  public update(user: any) {
+    const { id, ...item } = user;
+    return this.http.put(`${this.uri}/${id}`, item, { headers: this.httpHeaders })
+      .pipe(
+        tap(() => {
+          this.alert.showNotification({
+            message: 'Se ha actualizado con éxito el usuario'
+          });
+          this.route.navigateByUrl('/manager/users');
+        })
+      );
   }
 
   public delete(id: number) {
-    return this.http.delete(`${this.uri}/${id}`, { headers: this.httpHeaders });
+    return this.http.delete(`${this.uri}/${id}`, { headers: this.httpHeaders })
+    .pipe(
+      tap(() => {
+        this.alert.showNotification({
+          message: 'Categoria removida con éxito'
+        });
+      })
+    );
   }
 }

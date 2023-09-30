@@ -13,7 +13,7 @@ import { Storage } from 'src/app/memento/Storage';
   styleUrls: ['./manager.component.sass']
 })
 export class ManagerComponent implements OnInit {
-
+  isSidebarOpen = true;
   user = '';
   isLoading = false;
   subscription: Subscription = new Subscription();
