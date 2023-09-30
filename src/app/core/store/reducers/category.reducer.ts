@@ -1,30 +1,29 @@
 import {createReducer , on } from '@ngrx/store';
 import { Category } from 'src/app/shared/models/category.model';
-import { addCategory, deleteCategory, loadCategories, loadedCategories, loadedCategory } from '../actions/category.action';
+import { addCategory, deleteCategory, loadCategories, loadedCategories, loadedCategory, loadedProductsByCategory } from '../actions/category.action';
 
 export interface CategoryState {
-  data: ReadonlyArray<Category>,
-  category: Category
+  categories: ReadonlyArray<Category>,
+  category: Category,
+  productsByCategory: ReadonlyArray<Category>
 }
 
 export const initialState: CategoryState = {
-  data: [],
+  categories: [],
   category: {
     id: 0,
     name: '',
     image: '',
     creationAt: '',
     updatedAt: '',
-  }
+  },
+  productsByCategory: []
 }
 
 export const CategoryReducer = createReducer(
   initialState,
-  on(loadCategories, (state) => {
-    return { ...state}
-  }),
   on(loadedCategories, (state, { categories }) => {
-    return { ...state, data: categories};
+    return { ...state, categories};
   }),
   on(loadedCategory, (state, { category }) => {
     return { ...state, category: category};
@@ -32,4 +31,7 @@ export const CategoryReducer = createReducer(
   on(deleteCategory, (state) => {
     return { ...state};
   }),
+  on(loadedProductsByCategory, (state, { products }) => {
+    return { ...state, productsByCategory: products};
+  })
 );

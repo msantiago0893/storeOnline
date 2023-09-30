@@ -7,10 +7,15 @@ export const selectCategoryState = createFeatureSelector<CategoryState>('categor
 // Selector para obtener la lista de categorías
 export const selectCategories = createSelector(
   selectCategoryState,
-  (state: CategoryState) => state.data
+  (state: CategoryState) => state.categories
 );
 
 export const selectCategory = createSelector(
   selectCategoryState,
   (state: CategoryState) => state.category
+);
+
+export const selectProductByCategory = createSelector(
+  selectCategoryState,
+  (state: CategoryState) => state.productsByCategory
 );

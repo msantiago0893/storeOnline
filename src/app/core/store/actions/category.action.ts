@@ -34,3 +34,13 @@ export const deleteCategory = createAction(
   '[Category Remove] Remove Category',
   props<{ id: number }>()
 );
+
+export const loadProductsByCategory = createAction(
+  '[ProductsbyCategory list] Load Products',
+  props<{ id: number }>()
+);
+
+export const loadedProductsByCategory = createAction(
+  '[ProductsbyCategory list] Loaded Products',
+  props<{ products: Category[] }>()
+);

@@ -3,7 +3,7 @@ import { Actions, createEffect, ofType } from '@ngrx/effects'
 import { catchError, concatMap, map, switchMap } from "rxjs/operators";
 import { EMPTY } from "rxjs";
 import { CategoryService } from "../../services/category.service";
-import { addCategory, loadCategory, updateCategory } from "../actions/category.action";
+import { addCategory, loadCategory, loadProductsByCategory, updateCategory } from "../actions/category.action";
 
 @Injectable()
 export class CategoryEffects {
@@ -64,6 +64,17 @@ export class CategoryEffects {
             { type: '[Category Remove] Remove success' },
             { type: '[Category list] Load Categories' }
           ])
+        )
+    )
+  ));
+
+  loadProductsByCategory$ = createEffect(() => this.actions$.pipe(
+    ofType(loadProductsByCategory),
+    switchMap(
+      ({ id }) => this._service.getProductsByCategory(id)
+        .pipe(
+          map(products => ({ type: '[ProductsbyCategory list] Loaded Products', products })),
+          catchError(() => EMPTY)
         )
     )
   ));
