@@ -10,6 +10,8 @@ import { AddUserComponent } from './user/add-user/add-user.component';
 import { AddCategoryComponent } from './category/add-category/add-category.component';
 import { DetailCategoryComponent } from './category/detail-category/detail-category.component';
 import { ViewProductsComponent } from './category/view-products/view-products.component';
+import { DetailUserComponent } from './user/detail-user/detail-user.component';
+import { DetailProductComponent } from './product/detail-product/detail-product.component';
 
 
 const routes: Routes = [
@@ -23,6 +25,14 @@ const routes: Routes = [
       {
         path: ROUTER.ADD_USER,
         component: AddUserComponent
+      },
+      {
+        path: ROUTER.UPDATE_USER,
+        component: AddUserComponent
+      },
+      {
+        path: ROUTER.DETAIL_USER,
+        component: DetailUserComponent
       },
       {
         path: ROUTER.CATEGORIES,
@@ -51,6 +61,14 @@ const routes: Routes = [
       {
         path: ROUTER.ADD_PRODUCT,
         component: AddProductComponent
+      },
+      {
+        path: ROUTER.UPDATE_PRODUCT,
+        component: AddProductComponent
+      },
+      {
+        path: ROUTER.DETAIL_PRODUCT,
+        component: DetailProductComponent
       },
       {
         path: '**',
