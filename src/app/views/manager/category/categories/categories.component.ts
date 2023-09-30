@@ -20,7 +20,6 @@ export class CategoriesComponent implements OnInit {
   displayedColumns: string[] = ['id', 'name', 'creationAt', 'operation'];
   dataSource = new MatTableDataSource();
   @ViewChild(MatPaginator) paginator: MatPaginator | undefined;
-  categorias$ = this.store.select(selectCategories);
 
   constructor(
     private store: Store<any>
@@ -39,9 +38,9 @@ export class CategoriesComponent implements OnInit {
   getCategories() {
     this.store.dispatch(loadCategories());
 
-    this.categorias$
-      .subscribe((categorias: any) => {
-        this.dataSource.data = categorias;
+    this.store.select(selectCategories)
+      .subscribe((categories: any) => {
+        this.dataSource.data = categories;
       });
   }
 

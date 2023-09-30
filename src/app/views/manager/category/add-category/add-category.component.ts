@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { Category } from '@model/category.model';
 import { Store } from '@ngrx/store';
 import { CategoryService } from 'src/app/core/services/category.service';
-import { addCategory, updateCategory } from 'src/app/core/store/actions/category.action';
+import { addCategory, loadCategory, updateCategory } from 'src/app/core/store/actions/category.action';
+import { selectCategory } from 'src/app/core/store/selectors/category.selector';
 
 @Component({
   selector: 'app-add-category',
@@ -17,7 +19,6 @@ export class AddCategoryComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private _service: CategoryService,
     private store: Store<any>,
     private route: ActivatedRoute
   ) {
@@ -38,9 +39,11 @@ export class AddCategoryComponent implements OnInit {
   }
 
   getCategory() {
-    this._service.getById(this.id)
-      .subscribe((item: any) => {
-        this.myForm.patchValue(item);
+    this.store.dispatch(loadCategory({id: this.id}));
+
+    this.store.select(selectCategory)
+      .subscribe((cateogry: Category) => {
+        this.myForm.patchValue(cateogry);
       });
   }
 
