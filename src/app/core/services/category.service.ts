@@ -5,6 +5,7 @@ import { tap } from 'rxjs/operators';
 import { Category } from 'src/app/shared/models/category.model';
 import { AlertSwalService } from './alert-swal.service';
 import { Router } from '@angular/router';
+import { ProductsByCategory } from '@model/products-by-category.model';
 
 @Injectable({
   providedIn: 'root'
@@ -67,5 +68,9 @@ export class CategoryService {
         });
       })
     );
+  }
+
+  public getProductsByCategory(id:number): Observable<ProductsByCategory[]> {
+    return this.http.get<ProductsByCategory[]>(`${this.uri}/${id}/products`);
   }
 }
