@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {  AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
-
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { login } from 'src/app/core/store/actions/auth.action';
 @Component({
   selector: 'app-signin',
   templateUrl: './signin.component.html',
@@ -11,32 +13,40 @@ export class SigninComponent implements OnInit {
   myForm: FormGroup = new FormGroup({});
   hide: boolean = true;
 
-  constructor( private fb: FormBuilder ) {
+  loading$: Observable<boolean> = new Observable();
+  users$: Observable<any> = new Observable();
+
+
+  constructor (
+    private store: Store<any>,
+    private fb: FormBuilder
+  ) {
     this.validators();
   }
 
   ngOnInit(): void {
+    // this.loading$ = this.store.select(selectLoading);
+    // this.store.dispatch(loadUsers());
+    // this.users$ = this.store.select(selectUserFeature);
   }
 
-  get input(): { [key: string]: AbstractControl } {
-    return this.myForm.controls;
-  }
-  
   access() {
-    console.log("hola");
-    console.log(this.myForm.value);
+    this.store.dispatch(login(this.myForm.value));
+  }
+
+  get input(): {[key: string]: AbstractControl} {
+    return this.myForm.controls;
   }
 
   validators() {
     this.myForm = this.fb.group({
-      email:['', [
+      email:['admin@mail.com', [
         Validators.required,
         Validators.email,
         Validators.minLength(5),
         Validators.maxLength(50)
-
       ]],
-      password:['', [
+      password:['admin123', [
         Validators.required,
         Validators.minLength(6),
         Validators.maxLength(12),

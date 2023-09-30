@@ -1,10 +1,12 @@
 <app-header></app-header>
 
+<h1 *ngIf="(loading$ | async)">Cargando....</h1>
+
 <div class="form-wrapper">
 
   <form class="form" [formGroup]="myForm" novalidate>
 
-    <img class="form__logo" src="assets/login.webp">
+    <img class="form__logo" src="assets/images/login.webp">
 
     <mat-form-field class="form__input" appearance="fill">
       <mat-label>Email</mat-label>
@@ -26,11 +28,9 @@
       </mat-error>
     </mat-form-field>
 
-
     <button class="btn-access" mat-raised-button color="primary" [disabled]="myForm.invalid" (click)="access()" >Entrar</button>
 
     <a class="text" mat-flat-button routerLink="/auth/forgot-password">Recuperar contraseña</a>
   </form>
-  <pre>{{ myForm.value | json }}</pre>
-  <pre>{{ myForm.invalid | json }}</pre>
+
 </div>
