@@ -34,3 +34,8 @@ export const deleteUser = createAction(
   '[User Remove] Remove User',
   props<{ id: number }>()
 );
+
+export const changePassword = createAction(
+  '[User] Change password',
+  props<{ user: any }>()
+);
