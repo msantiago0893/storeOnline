@@ -17,11 +17,4 @@ export class SessionService {
   isManager() {
     return localStorage.getItem('user') === 'admin';
   }
-
-  logout() {
-
-    localStorage.clear();
-    this.router.navigateByUrl('signin');
-  }
-
 }

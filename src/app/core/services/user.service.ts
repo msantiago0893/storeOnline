@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { AlertSwalService } from './alert-swal.service';
 import { Router } from '@angular/router';
+import { ROUTER } from '@constants/routers';
 
 @Injectable({
   providedIn: 'root'
@@ -40,22 +41,37 @@ export class UserService {
           message: 'Se ha registrado el usuario'
         });
 
-        this.route.navigateByUrl('/manager/users');
+        this.route.navigateByUrl(`/manager/${ROUTER.USERS}`);
       })
     );
   }
 
-  public update(user: any) {
-    const { id, ...item } = user;
-    return this.http.put(`${this.uri}/${id}`, item, { headers: this.httpHeaders })
+  public changePassword(user: any) {
+    return this.update(user)
+      .pipe(
+        tap(() => {
+          this.alert.showNotification({
+            message: 'Se ha cambiado su contraseña con éxito'
+          });
+        })
+      );
+  }
+
+  public updateUser(user: any) {
+    return this.update(user)
       .pipe(
         tap(() => {
           this.alert.showNotification({
             message: 'Se ha actualizado con éxito el usuario'
           });
-          this.route.navigateByUrl('/manager/users');
+          this.route.navigateByUrl(`/manager/${ROUTER.USERS}`);
         })
       );
+  }
+
+  public update(user: any) {
+    const { id, ...item } = user;
+    return this.http.put(`${this.uri}/${id}`, item, { headers: this.httpHeaders });
   }
 
   public delete(id: number) {
@@ -63,7 +79,7 @@ export class UserService {
     .pipe(
       tap(() => {
         this.alert.showNotification({
-          message: 'Categoria removida con éxito'
+          message: 'Usuario removida con éxito'
         });
       })
     );

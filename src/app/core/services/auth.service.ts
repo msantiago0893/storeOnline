@@ -1,6 +1,11 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { switchMap, tap } from 'rxjs/operators';
+import { Router } from '@angular/router';
+import { Storage } from '@memento/Storage';
+import { catchError, switchMap, tap } from 'rxjs/operators';
+import { AlertSwalService } from './alert-swal.service';
+import { throwError } from 'rxjs';
+import { ROUTER } from '@constants/routers';
 
 @Injectable({
   providedIn: 'root'
@@ -14,31 +19,26 @@ export class AuthService {
   });
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private route: Router,
+    private alert: AlertSwalService
   ) { }
 
-  // public login(item: Object) {
-  //   console.log('service login');
-  //   console.log(item);
-  //   return this.http.post(`${this.uri}`, item, { headers: this.httpHeaders }).pipe(
-  //     tap((response: any) => {
-  //       if (response && response.access_token) {
-  //         localStorage.setItem('accessToken', response.access_token);
-  //       }
-  //     })
-  //   );
-  // }
-
   public login(item: Object) {
-    console.log('service login');
-    console.log(item);
     return this.http.post(`${this.uri}`, item, { headers: this.httpHeaders }).pipe(
       tap((response: any) => {
         if (response && response.access_token) {
           localStorage.setItem('accessToken', response.access_token);
         }
       }),
-      switchMap(() => this.profile())
+      switchMap(() => this.profile()),
+      tap(() => {
+        location.reload();
+      }),
+      catchError((error) => {
+        this.alert.showNotification({icon: 'error', message: 'Sus credenciales son incorrectas'});
+        return throwError(error);
+      })
     );
   }
 
@@ -54,5 +54,10 @@ export class AuthService {
     ).pipe(
       tap((response) => localStorage.setItem('user', JSON.stringify(response)))
     );
+  }
+
+  logout() {
+    Storage.clear();
+    location.reload();
   }
 }
