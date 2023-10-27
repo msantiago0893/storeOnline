@@ -23,5 +23,11 @@ export const ROUTER = {
   UPDATE_USER: "update-user/:id",
   DETAIL_USER: "user/:id",
 
-  CUSTOMER: "customer"
+  MY_ACCOUNT: 'my-account',
+  UPDATE_PASSWORD: 'change-password',
+
+  CUSTOMER: "customer",
+  GALLERY: "gallery",
+  CONTACT: "contact",
+  SHOPPPING: "shopping",
 }

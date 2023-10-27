@@ -1,12 +1,13 @@
-export interface ProductsByCategory {
+export interface Product {
   category: Category;
   creationAt: Date;
-  description: String;
+  description: string;
   id: number;
   images: string[];
   price: number;
-  title: String;
+  title: string;
   updatedAt: Date;
+  quantity?: number;
 }
 
 export interface Category {

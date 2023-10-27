@@ -16,11 +16,7 @@ export class ImageDirective {
     this.loadImage(this.defaultImageUrl);
   }
 
-  ngOnInit() {
-    if (!this.appImageValidation) {
-      this.loadImage(this.defaultImageUrl);
-    }
-  }
+  ngOnInit() { }
 
   private loadImage(url: string) {
     this.renderer.setAttribute(this.el.nativeElement, 'src', url);
