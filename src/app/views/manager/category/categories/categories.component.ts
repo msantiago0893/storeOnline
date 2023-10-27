@@ -4,22 +4,18 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Store } from '@ngrx/store';
 import { deleteCategory, loadCategories } from 'src/app/core/store/actions/category.action';
 import { selectCategories } from 'src/app/core/store/selectors/category.selector';
-import { fadeAnimation, slideInOutAnimation } from 'src/app/shared/animations/animation';
 
 @Component({
   selector: 'app-categories',
   templateUrl: './categories.component.html',
   styleUrls: ['./categories.component.sass'],
-  animations: [
-    fadeAnimation,
-    slideInOutAnimation
-  ]
 })
 export class CategoriesComponent implements OnInit {
 
   displayedColumns: string[] = ['id', 'name', 'creationAt', 'operation'];
   dataSource = new MatTableDataSource();
   @ViewChild(MatPaginator) paginator: MatPaginator | undefined;
+  search:string = '';
 
   constructor(
     private store: Store<any>

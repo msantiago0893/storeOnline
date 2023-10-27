@@ -5,10 +5,17 @@
 
 <div [hidden]="!dataSource.data.length">
 
-  <h1 class="title">MIS CATEGORIAS</h1>
+  <h1 class="title">CATEGORIAS</h1>
 
   <div class="table">
-    <mat-table mat-table [dataSource]="dataSource" [@fade]>
+    <mat-form-field appearance="fill">
+      <mat-label>Buscar</mat-label>
+      <input matInput [(ngModel)]="search" placeholder="User">
+      <mat-icon matSuffix>search</mat-icon>
+      <mat-hint>Hint</mat-hint>
+    </mat-form-field>
+
+    <mat-table mat-table [dataSource]="dataSource.data | filter: search">
 
       <ng-container matColumnDef="id">
         <th mat-header-cell class="custom-header-cell" *matHeaderCellDef> ID </th>
@@ -38,6 +45,10 @@
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="4">No hay datos que coincidan con el filtro {{search}}"</td>
+      </tr>
     </mat-table>
 
     <mat-paginator [pageSizeOptions]="[10, 15, 20]" showFirstLastButtons aria-label="Select page of periodic elements">
