@@ -1,7 +1,6 @@
 import { createReducer, on } from "@ngrx/store";
 import { login, loginFailure, loginSuccess } from "../actions/auth.action";
 
-// Define una interfaz para el estado de autenticación
 export interface AuthState {
   token: string,
 
