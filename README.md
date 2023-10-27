@@ -1,4 +1,4 @@
-# Description Storeonline - Segunda prueba jenkins 3
+# Description Storeonline - Fake shop api
  - Angular v12
  - Node v16.10.0
 
