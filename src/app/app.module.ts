@@ -18,10 +18,11 @@ import { HttpErrorInterceptor } from './core/interceptors/error.interceptor';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatPaginatorIntl } from '@angular/material/paginator';
 import { SpinnerInterceptor } from './core/interceptors/Spinner.interceptor';
+import { ProductEffects } from './core/store/effects/product.effects';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     CommonModule,
@@ -36,9 +37,10 @@ import { SpinnerInterceptor } from './core/interceptors/Spinner.interceptor';
     ),
     StoreDevtoolsModule.instrument({ name: 'TEST' }),
     EffectsModule.forRoot([
-      UserEffects,
       AuthEffects,
-      CategoryEffects
+      UserEffects,
+      CategoryEffects,
+      ProductEffects
     ])
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
