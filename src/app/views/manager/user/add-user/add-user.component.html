@@ -17,7 +17,7 @@
         <mat-label>Email</mat-label>
         <input matInput formControlName="email">
         <mat-error *ngIf="input['email'].touched && input['email'].invalid">
-          <span *ngIf="input['email'].errors">Nombre invalido</span>
+          <span *ngIf="input['email'].errors">Email invalido</span>
         </mat-error>
       </mat-form-field>
 
@@ -25,7 +25,7 @@
         <mat-label>Contraseña</mat-label>
         <input type="password" matInput formControlName="password">
         <mat-error *ngIf="input['password'].touched && input['password'].invalid">
-          <span *ngIf="input['password'].errors">Nombre invalido</span>
+          <span *ngIf="input['password'].errors">Contraseña invalida</span>
         </mat-error>
       </mat-form-field>
 
@@ -36,7 +36,7 @@
           <mat-option value="customer"> Cliente </mat-option>
         </mat-select>
         <mat-error *ngIf="input['role'].touched && input['role'].invalid">
-          <span *ngIf="input['role'].errors">Nombre invalido</span>
+          <span *ngIf="input['role'].errors">Rol invalido</span>
         </mat-error>
       </mat-form-field>
 
