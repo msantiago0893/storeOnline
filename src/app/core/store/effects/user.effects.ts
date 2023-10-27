@@ -3,7 +3,7 @@ import { UserService } from "../../services/user.service";
 import { Actions, createEffect, ofType } from '@ngrx/effects'
 import { catchError, concatMap, map, mergeMap, switchMap } from "rxjs/operators";
 import { EMPTY } from "rxjs";
-import { addUser, deleteUser, loadUser, loadUsers, updateUser } from "../actions/user.action";
+import { addUser, changePassword, deleteUser, loadUser, loadUsers, updateUser } from "../actions/user.action";
 
 @Injectable()
 export class UserEffects {
@@ -45,11 +45,11 @@ export class UserEffects {
     { dispatch: false }
   );
 
-  updateCategory$ = createEffect(() =>
+  updateUser$ = createEffect(() =>
     this.actions$.pipe(
       ofType(updateUser),
       switchMap((action) =>
-        this.service.update(action.user)
+        this.service.updateUser(action.user)
       )
     ),
     { dispatch: false }
@@ -67,5 +67,14 @@ export class UserEffects {
     )
   ));
 
+  changePassword$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(changePassword),
+      switchMap((action) =>
+        this.service.changePassword(action.user)
+      )
+    ),
+    { dispatch: false }
+  );
 }
 
