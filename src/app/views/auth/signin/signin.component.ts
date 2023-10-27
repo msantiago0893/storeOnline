@@ -24,11 +24,7 @@ export class SigninComponent implements OnInit {
     this.validators();
   }
 
-  ngOnInit(): void {
-    // this.loading$ = this.store.select(selectLoading);
-    // this.store.dispatch(loadUsers());
-    // this.users$ = this.store.select(selectUserFeature);
-  }
+  ngOnInit(): void { }
 
   access() {
     this.store.dispatch(login(this.myForm.value));
@@ -40,13 +36,13 @@ export class SigninComponent implements OnInit {
 
   validators() {
     this.myForm = this.fb.group({
-      email:['admin@mail.com', [
+      email:['john@mail.com', [
         Validators.required,
         Validators.email,
         Validators.minLength(5),
         Validators.maxLength(50)
       ]],
-      password:['admin123', [
+      password:['changeme', [
         Validators.required,
         Validators.minLength(6),
         Validators.maxLength(12),
