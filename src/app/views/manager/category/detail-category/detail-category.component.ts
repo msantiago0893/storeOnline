@@ -12,8 +12,8 @@ import { selectCategory } from 'src/app/core/store/selectors/category.selector';
   animations: [
     trigger('slideInUp', [
       transition(':enter', [
-        style({ transform: 'translatex(-100%)', opacity: 0 }), // Estado inicial: fuera de la vista
-        animate('0.5s ease-out', style({ transform: 'translateY(0)', opacity: 1 })), // Desliza hacia arriba y se vuelve visible
+        style({ transform: 'translatex(-100%)', opacity: 0 }),
+        animate('0.5s ease-out', style({ transform: 'translateY(0)', opacity: 1 })),
       ]),
     ]),
   ]
