@@ -16,7 +16,7 @@
 
     <ng-container matColumnDef="price">
       <th mat-header-cell class="custom-header-cell" *matHeaderCellDef> Precio </th>
-      <td mat-cell class="custom-data-cell" *matCellDef="let element"> {{element.price}} </td>
+      <td mat-cell class="custom-data-cell" *matCellDef="let element"> {{element.price |  currency:'MXN ':'symbol':'1.2-2' }} </td>
     </ng-container>
 
     <ng-container matColumnDef="description">
