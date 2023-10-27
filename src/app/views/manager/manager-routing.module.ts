@@ -12,6 +12,8 @@ import { DetailCategoryComponent } from './category/detail-category/detail-categ
 import { ViewProductsComponent } from './category/view-products/view-products.component';
 import { DetailUserComponent } from './user/detail-user/detail-user.component';
 import { DetailProductComponent } from './product/detail-product/detail-product.component';
+import { MyAccountComponent } from '../profile/my-account/my-account.component';
+import { ChangePasswordComponent } from '../profile/change-password/change-password.component';
 
 
 const routes: Routes = [
@@ -69,6 +71,14 @@ const routes: Routes = [
       {
         path: ROUTER.DETAIL_PRODUCT,
         component: DetailProductComponent
+      },
+      {
+        path: ROUTER.MY_ACCOUNT,
+        component: MyAccountComponent
+      },
+      {
+        path: ROUTER.UPDATE_PASSWORD,
+        component: ChangePasswordComponent
       },
       {
         path: '**',

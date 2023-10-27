@@ -23,6 +23,8 @@ import { SpinnerModule } from '@components/spinner/spinner.module';
 import { ErrorModule } from '@components/error/error.module';
 import { EmptyModule } from '@components/empty/empty.module';
 import { ViewProductsComponent } from './category/view-products/view-products.component';
+import { PipesModule } from 'src/app/shared/pipes/pipes.module';
+import { ProfileModule } from '../profile/profile.module';
 
 @NgModule({
   declarations: [
@@ -45,11 +47,13 @@ import { ViewProductsComponent } from './category/view-products/view-products.co
     FormsModule,
     RouterModule,
     CommonModule,
+    PipesModule,
     HeaderModule,
     SpinnerModule,
     ErrorModule,
     EmptyModule,
-    ImageModule
+    ImageModule,
+    ProfileModule
   ]
 })
 export class ManagerModule { }

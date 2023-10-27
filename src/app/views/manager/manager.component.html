@@ -12,14 +12,14 @@
     <mat-icon>account_circle</mat-icon>
   </button>
   <mat-menu #userAccountMenu [overlapTrigger]="false" yPosition="below">
-    <button mat-menu-item routerLink="#">
+    <button mat-menu-item routerLink="/manager/my-account">
       <mat-icon>person</mat-icon><span>Mi cuenta</span>
     </button>
-    <button mat-menu-item routerLink="#">
+    <button mat-menu-item routerLink="/manager/change-password">
       <mat-icon>settings</mat-icon><span>Ajustes</span>
     </button>
     <mat-divider></mat-divider>
-    <button mat-menu-item routerLink="/auth/signin">
+    <button mat-menu-item (click)="logout()">
       <mat-icon>exit_to_app</mat-icon>
       Cerrar sesión
     </button>
@@ -35,10 +35,10 @@
           Usuarios
         </mat-expansion-panel-header>
         <mat-nav-list>
-          <a mat-list-item routerLink="/manager/users">
+          <a mat-list-item routerLink="/manager/users" routerLinkActive="menu-active">
             <mat-icon> youtube_searched_for </mat-icon><span>Consultar</span>
           </a>
-          <a mat-list-item routerLink="/manager/add-user">
+          <a mat-list-item routerLink="/manager/add-user" routerLinkActive="menu-active">
             <mat-icon> supervisor_account </mat-icon><span>Agregar</span>
           </a>
         </mat-nav-list>
@@ -48,10 +48,10 @@
           Categorias
         </mat-expansion-panel-header>
         <mat-nav-list>
-          <a mat-list-item routerLink="/manager/categories">
+          <a mat-list-item routerLink="/manager/categories" routerLinkActive="menu-active">
             <mat-icon> youtube_searched_for </mat-icon><span>Consultar</span>
           </a>
-          <a mat-list-item routerLink="/manager/add-category">
+          <a mat-list-item routerLink="/manager/add-category" routerLinkActive="menu-active">
             <mat-icon> supervisor_account </mat-icon><span>Agregar</span>
           </a>
         </mat-nav-list>
@@ -61,10 +61,10 @@
           Productos
         </mat-expansion-panel-header>
         <mat-nav-list>
-          <a mat-list-item routerLink="/manager/products">
+          <a mat-list-item routerLink="/manager/products" routerLinkActive="menu-active">
             <mat-icon> youtube_searched_for </mat-icon><span>Consultar</span>
           </a>
-          <a mat-list-item routerLink="/manager/add-product">
+          <a mat-list-item routerLink="/manager/add-product" routerLinkActive="menu-active">
             <mat-icon> supervisor_account </mat-icon><span>Agregar</span>
           </a>
         </mat-nav-list>
@@ -82,7 +82,7 @@
       <app-error></app-error>
     </ng-container>
 
-    <div [ngClass]="{ 'body--disabled': isLoading }" style="height: 100%;" [hidden]='isError$ | async'>
+    <div [ngClass]="{ 'body--disabled': isLoading }" style="height: 100%;" [hidden]='isError$ | async' [@fade]>
       <router-outlet></router-outlet>
     </div>
 

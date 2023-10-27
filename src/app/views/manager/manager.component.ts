@@ -1,16 +1,21 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
+import { AuthService } from '@services/auth.service';
 import { Subscription } from 'rxjs';
 import { filter } from 'rxjs/operators';
 import { setError } from 'src/app/core/store/actions/app.action';
 import { selectIsError, selectIsLoading } from 'src/app/core/store/selectors/app.selector';
 import { Storage } from 'src/app/memento/Storage';
+import { fadeAnimation } from 'src/app/shared/animations/animation';
 
 @Component({
   selector: 'app-manager',
   templateUrl: './manager.component.html',
-  styleUrls: ['./manager.component.sass']
+  styleUrls: ['./manager.component.sass'],
+  animations: [
+    fadeAnimation
+  ]
 })
 export class ManagerComponent implements OnInit {
   isSidebarOpen = true;
@@ -24,7 +29,8 @@ export class ManagerComponent implements OnInit {
   constructor(
     private router: Router,
     private store: Store<any>,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    public auth: AuthService
   ) {
     this.user = Storage.getItem('user').name;
   }
@@ -38,13 +44,8 @@ export class ManagerComponent implements OnInit {
     this.store.select(selectIsLoading)
       .subscribe((isLoading: boolean) => {
         this.isLoading = isLoading;
-        this.updateView();
+        this.cdr.detectChanges();   //TODO Call detectChanges to force the view to update
       });
-  }
-
-  private updateView() {
-    //TODO Call detectChanges to force the view to update
-    this.cdr.detectChanges();
   }
 
   changeOfRoute() {
@@ -56,6 +57,10 @@ export class ManagerComponent implements OnInit {
       .subscribe(() => {
         this.store.dispatch(setError({isError: false}));
       });
+  }
+
+  logout() {
+    this.auth.logout();
   }
 
   ngOnDestroy() {
