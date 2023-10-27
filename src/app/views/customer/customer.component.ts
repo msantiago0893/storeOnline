@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Store, select } from '@ngrx/store';
+import { AuthService } from '@services/auth.service';
+import { selectCartTotalItems } from 'src/app/core/store/selectors/cart.selector';
 
 @Component({
   selector: 'app-customer',
@@ -6,10 +9,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./customer.component.sass']
 })
 export class CustomerComponent implements OnInit {
+  totalItems$ = this.store.pipe(select(selectCartTotalItems));
 
-  constructor() { }
+  constructor(
+    private store: Store<any>,
+    private session: AuthService
+  ) { }
 
   ngOnInit(): void {
+  }
+
+  logout() {
+    this.session.logout();
   }
 
 }
