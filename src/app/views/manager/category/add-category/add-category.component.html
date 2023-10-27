@@ -2,7 +2,7 @@
 
 <mat-divider></mat-divider>
 <br>
-
+ 
 <div class="wrapper">
   <form class="form" [formGroup]="myForm" novalidate>
 
@@ -27,7 +27,7 @@
       color="primary"
       [disabled]="myForm.invalid"
       (click)=" id ? update() : save()">
-      Entrar
+      {{ id ? 'Actualizar' : 'Guardar' }}
     </button>
 
   </form>

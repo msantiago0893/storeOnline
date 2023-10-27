@@ -3,7 +3,6 @@ import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/fo
 import { ActivatedRoute } from '@angular/router';
 import { Category } from '@model/category.model';
 import { Store } from '@ngrx/store';
-import { CategoryService } from 'src/app/core/services/category.service';
 import { addCategory, loadCategory, updateCategory } from 'src/app/core/store/actions/category.action';
 import { selectCategory } from 'src/app/core/store/selectors/category.selector';
 
@@ -13,7 +12,6 @@ import { selectCategory } from 'src/app/core/store/selectors/category.selector';
   styleUrls: ['./add-category.component.sass']
 })
 export class AddCategoryComponent implements OnInit {
-
   myForm: FormGroup = new FormGroup({});
   id: any;
 
